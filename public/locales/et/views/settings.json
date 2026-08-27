@@ -1,0 +1,501 @@
+{
+  "cameraWizard": {
+    "step1": {
+      "password": "Salasõna",
+      "passwordPlaceholder": "Valikuline",
+      "customUrlPlaceholder": "rtsp://kasutajanimi:salasõna@host:port/asukoht",
+      "connectionSettings": "Ühenduse seadistused",
+      "port": "Port",
+      "username": "Kasutajanimi",
+      "usernamePlaceholder": "Valikuline"
+    },
+    "step3": {
+      "streamUrlPlaceholder": "rtsp://kasutajanimi:salasõna@host:port/asukoht",
+      "url": "Võrguaadress",
+      "resolution": "Resolutsioon",
+      "quality": "Kvaliteet",
+      "roles": "Rollid",
+      "roleLabels": {
+        "record": "Salvestamine",
+        "audio": "Heliriba"
+      },
+      "connected": "Ühendatud",
+      "featuresTitle": "Funktsionaalsused"
+    },
+    "steps": {
+      "probeOrSnapshot": "Võta proov või tee hetkvõte"
+    },
+    "step2": {
+      "testing": {
+        "fetchingSnapshot": "Laadin kaamera hetkvõtet alla..."
+      },
+      "retry": "Proovi uuesti",
+      "manufacturer": "Tootja",
+      "model": "Mudel",
+      "firmware": "Püsivara",
+      "profiles": "Profiilid",
+      "presets": "Eelseadistused",
+      "useCandidate": "Kasuta",
+      "uriCopy": "Kopeeri",
+      "connected": "Ühendatud"
+    },
+    "testResultLabels": {
+      "resolution": "Resolutsioon",
+      "video": "Video",
+      "audio": "Heliriba",
+      "fps": "Kaadrisagedus"
+    },
+    "step4": {
+      "reload": "Laadi uuesti",
+      "connecting": "Ühendan…",
+      "valid": "Kehtiv",
+      "failed": "Ebaõnnestunud",
+      "connectStream": "Ühenda",
+      "connectingStream": "Ühendan",
+      "disconnectStream": "Katkesta ühendus",
+      "roles": "Rollid",
+      "none": "Määramata",
+      "error": "Viga"
+    }
+  },
+  "users": {
+    "updatePassword": "Lähtesta salasõna",
+    "toast": {
+      "success": {
+        "updatePassword": "Salasõna muutmine õnnestus."
+      },
+      "error": {
+        "setPasswordFailed": "Salasõna salvestamine ei õnnestunud: {{errorMessage}}"
+      }
+    },
+    "table": {
+      "password": "Lähtesta salasõna",
+      "username": "Kasutajanimi",
+      "actions": "Tegevused",
+      "role": "Roll"
+    },
+    "dialog": {
+      "form": {
+        "password": {
+          "title": "Salasõna",
+          "placeholder": "Sisesta salasõna",
+          "confirm": {
+            "title": "Korda salasõna",
+            "placeholder": "Korda salasõna"
+          },
+          "strength": {
+            "title": "Salasõna tugevus: ",
+            "weak": "Nõrk",
+            "medium": "Keskmime",
+            "strong": "Tugev",
+            "veryStrong": "Väga tugev"
+          },
+          "match": "Salasõnad klapivad omavahel",
+          "notMatch": "Salasõnad ei klapi omavahel",
+          "show": "Näita salasõna",
+          "hide": "Peida salasõna",
+          "requirements": {
+            "title": "Salasõna reeglid:",
+            "length": "Vähemalt 12 tähemärki",
+            "uppercase": "Vähemalt üks suurtäht",
+            "digit": "Vähemalt üks number",
+            "special": "Vähemalt üks erimärk (!@#$%^&*(),.?\":{}|<>)"
+          }
+        },
+        "newPassword": {
+          "title": "Uus salasõna",
+          "placeholder": "Sisesta uus salasõna",
+          "confirm": {
+            "placeholder": "Sisesta uus salasõna uuesti"
+          }
+        },
+        "passwordIsRequired": "Salasõna on vajalik",
+        "currentPassword": {
+          "title": "Senine salasõna",
+          "placeholder": "Sisesta oma senine salasõna"
+        },
+        "user": {
+          "title": "Kasutajanimi",
+          "desc": "Lubatud on vaid tähed, numbrid, punktid ja alakriipsud."
+        }
+      },
+      "createUser": {
+        "confirmPassword": "Palun kinnita oma uus salasõna",
+        "usernameOnlyInclude": "Kasutajanimes võivad olla vaid tähed, numbrid, punkt (.) või alakriips (_)"
+      },
+      "passwordSetting": {
+        "cannotBeEmpty": "Salasõna ei või jääda tühjaks",
+        "doNotMatch": "Salasõnad ei klapi omavahel",
+        "updatePassword": "Muuda kasutaja {{username}} salasõna",
+        "setPassword": "Sisesta salasõna",
+        "desc": "Selle kasutajakonto turvalisuse tagamiseks lisa tugev salasõna.",
+        "currentPasswordRequired": "Senine salasõna on vajalik",
+        "incorrectCurrentPassword": "Senine salasõna pole õige",
+        "passwordVerificationFailed": "Salasõna kontrollimine ei õnnestunud"
+      },
+      "changeRole": {
+        "roleInfo": {
+          "admin": "Peakasutaja",
+          "viewer": "Vaataja"
+        }
+      }
+    },
+    "title": "Kasutajad"
+  },
+  "debug": {
+    "boundingBoxes": {
+      "desc": "Näita jälgitavate objektide ümber märgiskaste"
+    },
+    "title": "Silumine ja veaotsing",
+    "debugging": "Veaotsing ja silumine",
+    "audio": {
+      "title": "Heliriba",
+      "score": "punktiskoor"
+    },
+    "timestamp": {
+      "title": "Ajatempel"
+    },
+    "zones": {
+      "title": "Tsoonid"
+    },
+    "regions": {
+      "title": "Alad"
+    },
+    "paths": {
+      "title": "Asukohad"
+    },
+    "objectShapeFilterDrawing": {
+      "score": "Punktiskoor",
+      "ratio": "Suhtarv",
+      "area": "Ala"
+    }
+  },
+  "documentTitle": {
+    "default": "Seadistused - Frigate",
+    "authentication": "Autentimise seadistused - Frigate",
+    "cameraReview": "Kaamerate kordusvaatuste seadistused - Frigate",
+    "general": "Profiili seadistused - Frigate",
+    "frigatePlus": "Frigate+ seadistused - Frigate",
+    "notifications": "Teavituste seadistused - Frigate",
+    "cameraManagement": "Kaamerate haldus - Frigate",
+    "masksAndZones": "Maskide ja tsoonide haldus - Frigate",
+    "object": "Silumine ja veaotsing - Frigate"
+  },
+  "general": {
+    "title": "Profiili seadistused",
+    "cameraGroupStreaming": {
+      "clearAll": "Kustuta kõik voogedastuse seadistused"
+    },
+    "liveDashboard": {
+      "title": "Töölaud reaalajas",
+      "automaticLiveView": {
+        "label": "Automaatne otseülekande vaade"
+      }
+    },
+    "calendar": {
+      "title": "Kalender",
+      "firstWeekday": {
+        "sunday": "Pühapäev",
+        "monday": "Esmaspäev",
+        "label": "Esimene nädalapäev"
+      }
+    },
+    "storedLayouts": {
+      "title": "Salvestatud paigutused"
+    },
+    "recordingsViewer": {
+      "title": "Salvestuste vaataja"
+    }
+  },
+  "cameraManagement": {
+    "backToSettings": "Tagasi kaameraseadistuste juurde",
+    "cameraConfig": {
+      "enabled": "Kasutusel",
+      "ffmpeg": {
+        "pathPlaceholder": "rtsp://...",
+        "roles": "Rollid"
+      }
+    },
+    "clone": {
+      "categories": {
+        "items": {
+          "lpr": "Sõidukite numbrimärkide tuvastus",
+          "genai": "Generatiivne tehisaru"
+        }
+      }
+    }
+  },
+  "notification": {
+    "notificationSettings": {
+      "title": "Teavituste seadistused"
+    },
+    "globalSettings": {
+      "title": "Üldseadistused"
+    },
+    "deviceSpecific": "Seadmekohased seadistused",
+    "toast": {
+      "success": {
+        "settingSaved": "Teavituste seadistused on salvestatud."
+      }
+    },
+    "title": "Teavitused",
+    "email": {
+      "title": "E-post"
+    },
+    "cameras": {
+      "title": "Kaamerad"
+    },
+    "suspendTime": {
+      "suspend": "Peata arvuti töö"
+    }
+  },
+  "frigatePlus": {
+    "title": "Frigate+ seadistused",
+    "unsavedChanges": "Frigate+ seadistuste muudatused on salvestamata",
+    "toast": {
+      "success": "Frigate+ seadistuste muudatused on salvestatud. Muudatuste kasutuselevõtmiseks käivita Frigate uuesti."
+    },
+    "snapshotConfig": {
+      "title": "Hetkvõtte seadistused",
+      "table": {
+        "snapshots": "Hetkvõtted",
+        "cleanCopySnapshots": "<code>clean_copy</code> Hetkvõtted",
+        "camera": "Kaamera"
+      }
+    },
+    "modelInfo": {
+      "plusModelType": {
+        "userModel": "Peenhäälestatud"
+      },
+      "cameras": "Kaamerad"
+    }
+  },
+  "masksAndZones": {
+    "zones": {
+      "point_one": "{{count}} punkt",
+      "point_other": "{{count}} punkti",
+      "label": "Tsoonid",
+      "desc": {
+        "documentation": "Dokumentatsioon"
+      },
+      "name": {
+        "title": "Nimi"
+      },
+      "inertia": {
+        "title": "Inerts"
+      },
+      "objects": {
+        "title": "Objektid"
+      }
+    },
+    "motionMasks": {
+      "point_one": "{{count}} punkt",
+      "point_other": "{{count}} punkti",
+      "desc": {
+        "documentation": "Dokumentatsioon"
+      }
+    },
+    "objectMasks": {
+      "point_one": "{{count}} punkt",
+      "point_other": "{{count}} punkti",
+      "desc": {
+        "documentation": "Dokumentatsioon"
+      },
+      "objects": {
+        "title": "Objektid"
+      }
+    }
+  },
+  "roles": {
+    "toast": {
+      "success": {
+        "userRolesUpdated_one": "{{count}} selle rolliga kasutaja on nüüd määratud Vaatajaks, kellel on ligipääs kõikidele kaameratele.",
+        "userRolesUpdated_other": "{{count}} selle rolliga kasutajat on nüüd määratud Vaatajaks, kellel on ligipääs kõikidele kaameratele."
+      }
+    },
+    "table": {
+      "role": "Roll",
+      "cameras": "Kaamerad",
+      "actions": "Tegevused"
+    },
+    "dialog": {
+      "deleteRole": {
+        "deleting": "Kustutan..."
+      },
+      "form": {
+        "cameras": {
+          "title": "Kaamerad"
+        },
+        "role": {
+          "desc": "Lubatud on vaid tähed, numbrid, punktid ja alakriipsud.",
+          "roleOnlyInclude": "Rolli nimes võivad olla vaid tähed, numbrid, punkt (.) või alakriips (_)"
+        }
+      }
+    }
+  },
+  "menu": {
+    "ui": "Kasutajaliides",
+    "cameraManagement": "Haldus",
+    "masksAndZones": "Maskid ja tsoonid",
+    "triggers": "Päästikud",
+    "debug": "Silumine ja veaotsing",
+    "users": "Kasutajad",
+    "roles": "Rollid",
+    "notifications": "Teavitused",
+    "frigateplus": "Frigate+",
+    "cameraReview": "Ülevaatamine",
+    "profiles": "Profiilid",
+    "integrationLpr": "Sõidukite numbrimärkide tuvastus",
+    "cameraLpr": "Sõidukite numbrimärkide tuvastus",
+    "uiSettings": "Kasutajaliidese seadistused",
+    "globalDetect": "Objektide tuvastamine",
+    "globalRecording": "Salvestamine",
+    "globalSnapshots": "Hetkvõtted",
+    "globalFfmpeg": "FFmpeg",
+    "globalMotion": "Liikumise tuvastus",
+    "globalObjects": "Objektid",
+    "globalReview": "Ülevaatamine",
+    "globalAudioEvents": "Heli tuvastus",
+    "globalLivePlayback": "Reaalajas sisu taasesitus",
+    "globalTimestampStyle": "Ajatempli stiil",
+    "systemDatabase": "Andmebaas",
+    "systemTls": "TLS",
+    "systemAuthentication": "Autentimine",
+    "systemNetworking": "Võrgundus",
+    "systemProxy": "Proksiserver",
+    "systemUi": "Kasutajaliides",
+    "systemLogging": "Logimine",
+    "systemEnvironmentVariables": "Keskkonnamuutujad",
+    "systemTelemetry": "Telemeetria",
+    "systemBirdseye": "Vaade linnulennult",
+    "systemFfmpeg": "FFmpeg",
+    "systemDetectorsAndModel": "Tuvastamine ja mudelid",
+    "systemMqtt": "MQTT",
+    "systemGo2rtcStreams": "go2rtc voogedastus",
+    "integrationSemanticSearch": "Semantiline otsing",
+    "integrationGenerativeAi": "Generatiivne tehisaru"
+  },
+  "dialog": {
+    "unsavedChanges": {
+      "title": "Sul on salvestamata muudatusi.",
+      "desc": "Kas soovid muudatused enne jätkamist salvestada?"
+    }
+  },
+  "cameraSetting": {
+    "camera": "Kaamera",
+    "noCamera": "Kaamerat pole"
+  },
+  "enrichments": {
+    "semanticSearch": {
+      "reindexNow": {
+        "confirmButton": "Indekseeri uuesti",
+        "label": "Indekseeri uuesti kohe"
+      },
+      "modelSize": {
+        "small": {
+          "title": "väike"
+        },
+        "large": {
+          "title": "suur"
+        }
+      },
+      "title": "Semantiline otsing"
+    },
+    "faceRecognition": {
+      "modelSize": {
+        "small": {
+          "title": "väike"
+        },
+        "large": {
+          "title": "suur"
+        }
+      }
+    },
+    "birdClassification": {
+      "title": "Lindude klassifikatsioon"
+    },
+    "licensePlateRecognition": {
+      "title": "Sõidukite numbrimärkide tuvastus"
+    }
+  },
+  "cameraReview": {
+    "review": {
+      "title": "Ülevaatamine",
+      "alerts": "Hoiatused ",
+      "detections": "Tuvastamise tulemused "
+    },
+    "object_descriptions": {
+      "title": "Generatiivse tehisaru objektikirjeldused",
+      "desc": "Luba/keela ajutiselt selle kaamera jaoks generatiivse tehisaru objektikirjeldused kuni Frigate'i taaskäivitamiseni. Kui see on keelatud, ei küsita selle kaamera jälgitavate objektide kohta tehisintellekti poolt loodud kirjeldusi."
+    },
+    "review_descriptions": {
+      "title": "Generatiivne tehisaru ülevaatamisele kuuluva sisu kirjedlused"
+    }
+  },
+  "motionDetectionTuner": {
+    "Threshold": {
+      "title": "Lävi"
+    }
+  },
+  "triggers": {
+    "documentTitle": "Päästikud",
+    "management": {
+      "title": "Päästikud"
+    },
+    "table": {
+      "name": "Nimi",
+      "type": "Tüüp",
+      "content": "Sisu",
+      "threshold": "Lävi",
+      "actions": "Tegevused",
+      "edit": "Muuda"
+    },
+    "type": {
+      "thumbnail": "Pisipilt",
+      "description": "Kirjeldus"
+    },
+    "dialog": {
+      "form": {
+        "name": {
+          "title": "Nimi",
+          "error": {
+            "invalidCharacters": "Välja nimes võivad olla vaid tähed, numbrid, alakriipsud (_) või sidekriipsud (-)."
+          }
+        },
+        "type": {
+          "title": "Tüüp"
+        },
+        "content": {
+          "title": "Sisu"
+        },
+        "threshold": {
+          "title": "Lävi"
+        },
+        "actions": {
+          "title": "Tegevused"
+        }
+      }
+    }
+  },
+  "profiles": {
+    "nameInvalid": "Lubatud on vaid väiketähed, numbrid ja alakriipsud"
+  },
+  "go2rtcStreams": {
+    "validation": {
+      "nameInvalid": "Voogedastuse nimes on lubatud vaid tähed, numbrid alakriipsud ja sidekriipsud"
+    }
+  },
+  "configForm": {
+    "sections": {
+      "lpr": "Sõidukite numbrimärkide tuvastus"
+    }
+  },
+  "configMessages": {
+    "detect": {
+      "disabled": "Objektide tuvastamine on lülitatud välja. Hetkepildid, läbivaatamisele kuuluvad objektid ja täiendavad funktsioonid, nagu näotuvastus, sõidukite numbrimärkide tuvastus ja generatiivne tehisintellekt, ei tööta."
+    },
+    "lpr": {
+      "vehicleNotTracked": "Sõidukite numbrimärkide tuvastus eeldab, et auto või mootorratas on jälgitav. Lülita menüüst Objektid sell kaamera jaoks sisse valikud „auto“ või „mootorratas“."
+    }
+  }
+}

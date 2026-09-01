@@ -205,3 +205,114 @@ find node_modules -depth -type d -empty -delete
 
 **6. 标定页面无法访问**
 标定页仅管理员可见，需以 admin 角色登录。
+
+---
+
+## 十、实时监控 / Frigate 部署问题排查（踩坑记录）
+
+实时监控页（`/`）依赖 **Frigate** 后端提供摄像头转流。以下为部署过程中遇到并解决过的问题，按现象分类。
+
+### 10.1 组件关系（先分清，别搞混）
+
+| 组件 | 地址 | 作用 | 你的任务是否需要 |
+|------|------|------|----------------|
+| web-design 前端 | `localhost:5173` | 你开发的界面 | 必须 |
+| Frigate | `localhost:5000` | 摄像头 RTSP → 浏览器可播流 | 实时监控页需要 |
+| 标定后端 | `192.168.0.102:5001` | 标定计算（内参/外参） | 标定页需要 |
+
+> **重要**：标定页走标定后端（5001），**不依赖 Frigate**。Frigate 只是实时监控页的转流工具。若实时监控页折腾不通，不影响标定功能。
+
+### 10.2 版本必须匹配（前端 ↔ Frigate）
+
+前端是基于某个 Frigate 版本 fork 的，**必须配对应版本的后端**，否则 WebSocket/API 协议对不上：
+
+| 现象 | 原因 |
+|------|------|
+| 实时监控页一直**转圈** | 前端等 `/ws`（WebSocket）数据，但后端版本不匹配 / WS 服务 500 |
+| 页面临时显示 offline | 后端摄像头采集失败 |
+
+- 前端基于 0.17 fork → 装 `stable`（= 0.17.x），**不要装 0.14**
+- 前端基于 0.14 fork → 装 `0.14.1`
+- 换版本后必须**删掉旧数据库**，避免 schema 不匹配：
+  ```bash
+  docker compose down
+  rm -f ~/frigate/media/frigate/frigate.db*
+  docker compose up -d
+  ```
+
+### 10.3 摄像头 RTSP 401（认证失败）
+
+**现象**：Frigate 日志显示
+```
+ffmpeg.camera_X.detect ERROR: rtsp://*:*@192.168.0.X:554/... Server returned 401 Unauthorized
+```
+（`*:*` 是 Frigate 对密码的脱敏显示，不代表密码丢失）
+
+**排查顺序**：
+1. **宿主机（虚拟机）直连**，确认密码对不对：
+   ```bash
+   ffprobe -rtsp_transport tcp "rtsp://admin:密码@192.168.0.64:554/Streaming/Channels/101"
+   ```
+   能出 `Stream #0 Video` = 密码对；401 = 密码错。
+
+2. **容器内测**（Frigate 的 ffmpeg 跑在容器里，跟宿主机访问结果可能不同）：
+   ```bash
+   docker exec frigate /usr/lib/ffmpeg/7.0/bin/ffprobe -rtsp_transport tcp "rtsp://admin:密码@IP/..."
+   ```
+   > 注意：ffprobe 在容器 PATH 里找不到，需用完整路径。引号极易被终端拆断，建议写进脚本文件再执行。
+
+3. **密码含 `@` 特殊字符**，两种写法都试：
+   - URL 编码：`admin:shu%402026`
+   - 明文：`admin:shu@2026`
+   海康摄像头不同固件对这两种处理不同，**宿主机能连的不代表容器能连**。
+
+4. **容器连不上局域网摄像头**（宿主机能连、容器 401/超时）：
+   这是 Docker **bridge 网络隔离**，容器默认访问不到宿主机所在网段的摄像头 IP。解决：**用 `network_mode: host`**，容器共享宿主机网络栈，摄像头访问与宿主机完全一致。
+
+   改 `docker-compose.yml`：
+   ```yaml
+   services:
+     frigate:
+       image: ghcr.io/blakeblackshear/frigate:stable
+       network_mode: host      # 关键：共享宿主机网络
+       privileged: true
+       volumes:
+         - ./config:/config
+         - ./media:/media/frigate
+   ```
+   > host 模式下**删掉 `ports:` 段**（host 网络不需要端口映射，5000 直接暴露）。
+
+### 10.4 总结：Frigate 实时监控的完整可用配置
+
+```yaml
+mqtt:
+  enabled: false
+
+detectors:
+  cpu:
+    type: cpu
+
+go2rtc:
+  streams:
+    camera_1: rtsp://admin:密码@192.168.0.64:554/Streaming/Channels/101
+    camera_2: rtsp://admin:密码@192.168.0.65:554/Streaming/Channels/101
+    camera_3: rtsp://admin:密码@192.168.0.66:554/Streaming/Channels/101
+
+cameras:
+  camera_1:
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:密码@192.168.0.64:554/Streaming/Channels/101
+          input_args: -rtsp_transport tcp
+          roles: [detect]
+    detect:
+      enabled: true
+      detector: cpu
+    ui:
+      order: 1
+  # camera_2、camera_3 结构同上，IP 分别为 .65、.66
+
+version: 0.17-0
+```
+
+> **最终结论**：实时监控页依赖 Frigate，配置繁琐（版本匹配、detectors、host 网络、密码编码、IP 一一对应）。**它是附带功能，不是标定的核心交付。** 若部署困难，可用 Frigate 自带页面 `localhost:5000` 看画面，不影响标定工作台（走标定后端 5001）。
